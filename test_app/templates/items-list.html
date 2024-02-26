@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Items list
+{% endblock %}
+
+{% block body %}
+  <h1>Items:</h1>
+  {% if items %}
+    <div>
+    {% for item in items %}
+      <div>
+        <p><a href="{% url 'items:item_details' pk=item.pk %}"
+        >Name: {{ item.name }}</a></p>
+        <p>Price: {{ item.price }}</p>
+      </div>
+    {% endfor %}
+
+    </div>
+
+  {% else %}
+    <h3>No items yet</h3>
+  {% endif %}
+
+{% endblock %}
