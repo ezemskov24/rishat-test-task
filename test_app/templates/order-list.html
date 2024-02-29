@@ -1,33 +1,30 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  Orders list
+Orders list
 {% endblock %}
 
 {% block body %}
-  <h1>Orders:</h1>
-  {% if object_list %}
+<h1>Orders:</h1>
+{% if object_list %}
+<div>
+    {% for order in object_list %}
     <div>
-      {% for order in object_list %}
-        <div>
-          >Order №{{ order.pk }}
-          <p>Order by {% firstof order.user.first_name order.user.username %}</p>
-          <div>
-            Items in order:
-            <ul>
-              {% for item in order.items.all %}
-                <li>{{ item.name }} for ${{ item.price }}</li>
-              {% endfor %}
-
-            </ul>
-          </div>
-
-        </div>
-      {% endfor %}
-
+        <p><a href="{% url 'items:order_details' pk=order.pk %}"
+        >Order №{{ order.pk }}</a></p>
     </div>
-  {% else %}
-    <h3>No orders yet</h3>
-  {% endif %}
-
+    <hr>
+    {% endfor %}
+</div>
+{% else %}
+<h3>No orders yet</h3>
+{% endif %}
+<div>
+    <a href="{% url 'items:order_create' %}"
+    >Create a new order</a>
+</div>
+<div>
+    <a href="{% url 'items:items_list' %}"
+    >Back to items list</a>
+</div>
 {% endblock %}

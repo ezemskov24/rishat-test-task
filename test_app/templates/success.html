@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thanks for your order!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section>
+    <p>
+        We appreciate your business! If you have any questions, please email
+        <a href="mailto:orders@example.com">orders@example.com</a>.
+    </p>
+</section>
+<div>
+    <a href="{% url 'items:items_list' %}">Back to items list</a>
+</div>
+<div>
+    <a href="{% url 'items:orders_list' %}"
+    >Back to orders list</a>
+</div>
+</body>
+</html>

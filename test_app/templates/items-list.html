@@ -1,25 +1,33 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  Items list
+Items list
 {% endblock %}
 
 {% block body %}
-  <h1>Items:</h1>
-  {% if items %}
-    <div>
+<h1>Items:</h1>
+{% if items %}
+<div>
     {% for item in items %}
-      <div>
+    <div>
         <p><a href="{% url 'items:item_details' pk=item.pk %}"
         >Name: {{ item.name }}</a></p>
-        <p>Price: {{ item.price }}</p>
-      </div>
-    {% endfor %}
-
+        <p>Price: {{ item.price_usd }}$</p>
     </div>
+    <hr>
+    {% endfor %}
+</div>
+<div>
+    <a href="{% url 'items:order_create' %}"
+    >Create a new order</a>
+</div>
+<div>
+    <a href="{% url 'items:orders_list' %}"
+    >Orders list</a>
+</div>
 
-  {% else %}
-    <h3>No items yet</h3>
-  {% endif %}
+{% else %}
+<h3>No items yet</h3>
+{% endif %}
 
 {% endblock %}
