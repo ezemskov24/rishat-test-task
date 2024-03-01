@@ -6,7 +6,10 @@ from django.views import View
 from items.models import Item, Order
 
 
-DOMAIN = "http://127.0.0.1:8000"
+DOMAIN = "http://127.0.0.1"
+
+# Домен для локального запуска
+# DOMAIN = "http://127.0.0.1:8000"
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
